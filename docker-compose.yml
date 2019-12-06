@@ -1,0 +1,30 @@
+version: '3'
+services:
+  webserver-alpine:
+    image: nginx:1.17.6-alpine
+    container_name: webserver-alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./application:/var/www/application
+      - ./nginx/site.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php-fpm-alpine
+    links:
+      - php-fpm-alpine
+    networks:
+      - docker-nginx-php-fpm-alpine
+  php-fpm-alpine:
+    build:
+      dockerfile: ./php-fpm/Dockerfile
+      context: .
+    container_name: php-fpm-alpine
+    working_dir: /var/www
+    volumes:
+      - ./application:/var/www/application
+    networks:
+      - docker-nginx-php-fpm-alpine
+networks:
+  docker-nginx-php-fpm-alpine:
+    driver: bridge
+

@@ -1,0 +1,10 @@
+.env
+.idea
+.DS_Store
+/vendor
+/.vscode
+/ci
+/docker-compose.override.yml
+*.iml
+*.lock
+xe*
