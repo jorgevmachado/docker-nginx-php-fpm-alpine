@@ -1,7 +1,7 @@
 version: '3'
 services:
   webserver-alpine:
-    image: nginx:${NGINX_VERSION}
+    image: nginx${NGINX_VERSION}
     container_name: webserver-alpine
     ports:
       - "${NGINX_HOST_HTTP_PORT}:80"
@@ -21,8 +21,22 @@ services:
       context: .
     container_name: php-fpm-alpine
     working_dir: ${WORKING_DIR}
+    depends_on:
+      - database
     volumes:
       - ${APPLICATION_DIR}:${WORKING_DIR}/${APPLICATION_NAME}
+    networks:
+      - docker-nginx-php-fpm-alpine
+  database:
+    image: mysql${MYSQL_VERSION}
+    container_name: database
+    ports:
+    - "${MYSQL_PORT}:3306"
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     networks:
       - docker-nginx-php-fpm-alpine
 networks:
