@@ -21,7 +21,7 @@
     #-------#
     # NGINX #
     #-------#
-    NGINX_VERSION=1.17.6-alpine
+    NGINX_VERSION=:1.17.6-alpine
     NGINX_DEFAULT_CONF=/etc/nginx/conf.d/default.conf
     NGINX_CONF=/etc/nginx/nginx.conf
     NGINX_HOST_HTTP_PORT=80
@@ -29,8 +29,9 @@
     #-------#
     # MYSQL #
     #-------#
+    MYSQL_VERSION=
     MYSQL_DATABASE=database
-    MYSQL_USER=default
-    MYSQL_PASSWORD=secret
+    MYSQL_USER=database
+    MYSQL_PASSWORD=database
     MYSQL_PORT=3306
-    MYSQL_ROOT_PASSWORD=root
+    MYSQL_ROOT_PASSWORD=database
