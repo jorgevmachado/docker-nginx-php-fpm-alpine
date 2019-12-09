@@ -8,3 +8,29 @@
     docker exec -it webserver-alpine /bin/sh
 ### To enter in container php-fpm    
     docker exec -it php-fpm-alpine /bin/sh
+## ENVIROMENT
+    #----------------------------#
+    # Configuração das Variáveis #
+    #----------------------------#
+    WORKING_DIR=/var/www
+    #----------------------#
+    # APPLICATION          #
+    #----------------------#
+    APPLICATION_DIR=./application
+    APPLICATION_NAME=application
+    #-------#
+    # NGINX #
+    #-------#
+    NGINX_VERSION=1.17.6-alpine
+    NGINX_DEFAULT_CONF=/etc/nginx/conf.d/default.conf
+    NGINX_CONF=/etc/nginx/nginx.conf
+    NGINX_HOST_HTTP_PORT=80
+    NGINX_HOST_HTTPS_PORT=443
+    #-------#
+    # MYSQL #
+    #-------#
+    MYSQL_DATABASE=database
+    MYSQL_USER=default
+    MYSQL_PASSWORD=secret
+    MYSQL_PORT=3306
+    MYSQL_ROOT_PASSWORD=root
